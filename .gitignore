@@ -1,6 +1,8 @@
 /venv/
 /.idea
 # Byte-compiled / optimized / DLL files
+.DS_Store
+/.idea
 __pycache__/
 *.py[cod]
 *$py.class
