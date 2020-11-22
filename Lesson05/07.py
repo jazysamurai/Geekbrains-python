@@ -11,3 +11,23 @@
 # [{"firm_1": 5000, "firm_2": 3000, "firm_3": 1000}, {"average_profit": 2000}]
 #
 # Подсказка: использовать менеджеры контекста.
+import json
+
+firm_dict = {}
+average_profit = []
+with open('07.txt') as f_obj:
+    lines = f_obj.readlines()
+    for line in lines:
+        name, form, revenue, costs = line.split()
+        profit = int(revenue) - int(costs)
+        firm_dict[name] = profit
+        if profit > 0:
+            average_profit.append(profit)
+
+average_profit = sum(average_profit) / len(average_profit)
+out_info = [firm_dict, {'average_profit': average_profit}]
+
+with open('07.json', 'w') as f_json:
+    json.dump(out_info, f_json)
+with open('07.json', 'r') as f_json:
+    print(json.load(f_json))

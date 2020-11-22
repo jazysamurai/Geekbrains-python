@@ -9,3 +9,12 @@
 #
 # Пример словаря:
 # {“Информатика”: 170, “Физика”: 40, “Физкультура”: 30}
+my_dict = dict()
+with open ('06.txt') as f_obj:
+    lines = f_obj.readlines()
+    for line in lines:
+        splitted_line = line.split()
+        subject = splitted_line[0]
+        sum_lessons = sum([int(x[:x.find('(')]) for x in splitted_line[1:] if '(' in x])
+        my_dict[subject[:-1]] = sum_lessons
+print(my_dict)
